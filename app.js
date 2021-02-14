@@ -13,7 +13,7 @@ let sliders = [];
 // to create your own api key
 const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
-// bonus section-1(adding spinner)
+// bonus section-1(add spinner)
 const toggleSpinner =() =>{
   const spinner = document.getElementById("toggle-spinner");
   spinner.classList.toggle("d-none");
@@ -24,11 +24,15 @@ const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
   // show gallery title
+  // bonus section-2 (add comment, like and view number)
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
-    div.innerHTML = `<img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
+    div.innerHTML = `<img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-eye text-white mx-1"></i>${image.views}</button>
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-heart text-white mx-1"></i>${image.likes}</button>
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-comments text-white mx-1"></i>${image.comments}</button>`;
     gallery.appendChild(div); 
   }) 
   toggleSpinner();
