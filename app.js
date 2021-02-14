@@ -30,9 +30,9 @@ const showImages = (images) => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = `<img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">
-    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-eye text-white mx-1"></i>${image.views}</button>
-    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-heart text-white mx-1"></i>${image.likes}</button>
-    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-comments text-white mx-1"></i>${image.comments}</button>`;
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-eye text-white"></i>${image.views}</button>
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-heart text-white"></i>${image.likes}</button>
+    <button class="btn btn-danger btn-sm ml-1 my-2"><i class="far fa-comments text-white "></i>${image.comments}</button>`;
     gallery.appendChild(div); 
   }) 
   toggleSpinner();
