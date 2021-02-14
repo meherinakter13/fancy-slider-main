@@ -13,6 +13,12 @@ let sliders = [];
 // to create your own api key
 const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 
+// bonus section-1(adding spinner)
+const toggleSpinner =() =>{
+  const spinner = document.getElementById("toggle-spinner");
+  spinner.classList.toggle("d-none");
+}
+
 // show images 
 const showImages = (images) => {
   imagesArea.style.display = 'block';
@@ -23,15 +29,11 @@ const showImages = (images) => {
     let div = document.createElement('div');
     div.className = 'col-lg-3 col-md-4 col-xs-6 img-item mb-2';
     div.innerHTML = `<img class="img-fluid img-thumbnail" onclick=selectItem(event,"${image.webformatURL}") src="${image.webformatURL}" alt="${image.tags}">`;
-    gallery.appendChild(div)
-    toggleSpinner();
+    gallery.appendChild(div); 
   }) 
+  toggleSpinner();
 }
-// bonus section-1(adding spinner)
-const toggleSpinner =() =>{
-  const spinner = document.getElementById("toggle-spinner");
-  spinner.classList.toggle("d-none");
-}
+
 const getImages = (query) => {
   toggleSpinner();
   fetch(`https://pixabay.com/api/?key=${KEY}=${query}&image_type=photo&pretty=true`)
@@ -76,6 +78,7 @@ const createSlider = () => {
   const duration = document.getElementById('duration').value || 1000;
   if (duration<0) {
     alert("You can't give a negative value here,Please give a positive value");
+     imagesArea.style.display = 'block'; 
   }
   else{
     sliders.forEach(slide => {
@@ -84,7 +87,7 @@ const createSlider = () => {
       item.innerHTML = `<img class="w-100"
       src="${slide}"
       alt="">`;
-      sliderContainer.appendChild(item)
+      sliderContainer.appendChild(item)  
     })
     changeSlide(0)
     timer = setInterval(function () {
@@ -116,7 +119,6 @@ const changeSlide = (index) => {
   items.forEach(item => {
     item.style.display = "none"
   })
-
   items[index].style.display = "block"
 }
 
